@@ -1,0 +1,6 @@
+{
+  "name": "PokeList",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PokeList.js"
+}

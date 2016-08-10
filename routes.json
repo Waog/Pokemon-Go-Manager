@@ -17,6 +17,10 @@
     "page": "./pages/about"
   },
   {
+    "path": "/pokelist",
+    "page": "./pages/pokelistpage"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "page": "./pages/home"
   }
