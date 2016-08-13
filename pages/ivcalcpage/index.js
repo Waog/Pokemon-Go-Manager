@@ -18,21 +18,11 @@ class IVCalcPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <IVCalc pokemon={OWNED_POKEMON}/>
+        <IVCalc />
       </Layout>
     );
   }
 
 }
-
-var OWNED_POKEMON = [
-  {name: 'Pidgey', values:[
-    {cp: '123', hp: '22', stardust: '600'}
-  ]},
-  {name: 'Rattata', values:[
-    {cp: '456', hp: '25', stardust: '600'},
-    {cp: '789', hp: '40', stardust: '800'}
-  ]},
-];
 
 export default IVCalcPage;

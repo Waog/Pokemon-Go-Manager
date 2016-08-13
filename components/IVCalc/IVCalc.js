@@ -1,11 +1,37 @@
 import React from 'react';
 import IVCalcEntry from './IVCalcEntry'
+import IVCalcAddForm from './IVCalcAddForm'
 
 class IVCalc extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      pokemon: [
+        {name: 'Pidgey', values:[
+          {cp: 123, hp: 22, stardust: 600}
+        ]},
+        {name: 'Rattata', values:[
+          {cp: 456, hp: 25, stardust: 600},
+          {cp: 789, hp: 40, stardust: 800}
+        ]},
+      ],
+      newPokemon: {name: 'Drowzee', values:[
+        {cp: 200, hp: 32, stardust: 1200}
+      ]}
+    };
+    console.log('constructor finished');
+  }
+
+  addNewPokemon() {
+      console.log('addNewPokemon');
+      this.state.pokemon.push(this.state.newPokemon);
+      this.setState(this.state);
+  }
+
   render() {
     var rows = [];
-    this.props.pokemon.forEach(function(pokemon) {
+    this.state.pokemon.forEach(function(pokemon) {
       rows.push(<IVCalcEntry name={pokemon.name} values={pokemon.values[0]} valCount={pokemon.values.length} /> );
       for (var i = 1; i < pokemon.values.length; i++) {
         rows.push(<IVCalcEntry values={pokemon.values[i]} />);
@@ -34,20 +60,7 @@ class IVCalc extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="text" className="form-control" id="newName" placeholder="Pidgey" /></td>
-              <td><input type="number" className="form-control" id="newCp" placeholder="123" /></td>
-              <td><input type="number" className="form-control" id="newHp" placeholder="23" /></td>
-              <td><input type="number" className="form-control" id="newStardust" placeholder="600" /></td>
-              <td>11</td>
-              <td>12</td>
-              <td>13</td>
-              <td>14</td>
-              <td>60%</td>
-              <td>
-                <button type="button" className="btn btn-success">ADD to List</button>
-              </td>
-            </tr>
+            <IVCalcAddForm pokemon={this.state.newPokemon} onAddPokemon={this.addNewPokemon} />
             {rows}
           </tbody>
         </table>
