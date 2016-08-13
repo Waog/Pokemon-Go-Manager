@@ -17,8 +17,8 @@
     "page": "./pages/about"
   },
   {
-    "path": "/pokelist",
-    "page": "./pages/pokelistpage"
+    "path": "/ivcalc",
+    "page": "./pages/ivcalcpage"
   },
   {
     "path": "/tasks/:status(pending|completed)?",

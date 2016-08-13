@@ -11,15 +11,15 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import PokeList from '../../components/PokeList';
+import IVCalc from '../../components/IVCalc';
 
-class PokeListPage extends React.Component {
+class IVCalcPage extends React.Component {
 
   render() {
     return (
       <Layout className={s.content}>
-        <h1>PokeList</h1>
-        <PokeList pokemon={OWNED_POKEMON}/>
+        <h1>IV Calculator</h1>
+        <IVCalc pokemon={OWNED_POKEMON}/>
       </Layout>
     );
   }
@@ -27,9 +27,13 @@ class PokeListPage extends React.Component {
 }
 
 var OWNED_POKEMON = [
-  {name: 'Pidgey', cp: '123'},
-  {name: 'Rattata', cp: '456'},
-  {name: 'Drowzee', cp: '789'}
+  {name: 'Pidgey', values:[
+    {cp: '123', hp: '22', stardust: '600'}
+  ]},
+  {name: 'Rattata', values:[
+    {cp: '456', hp: '25', stardust: '600'},
+    {cp: '789', hp: '40', stardust: '800'}
+  ]},
 ];
 
-export default PokeListPage;
+export default IVCalcPage;

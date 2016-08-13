@@ -13,3 +13,11 @@
   max-width: 1000px;
   width: 100%;
 }
+
+body {
+  padding-top: 50px;
+}
+.below-nav-bar {
+  padding: 40px 15px;
+  text-align: center;
+}

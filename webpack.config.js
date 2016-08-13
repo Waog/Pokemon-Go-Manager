@@ -37,6 +37,7 @@ const config = {
     'react-mdl/extra/material.min.js',
     /* The main entry point of your JavaScript application */
     './main.js',
+    'bootstrap-loader'
   ],
 
   // Options affecting the output of the compilation
