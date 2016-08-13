@@ -15,16 +15,12 @@ class IVCalc extends React.Component {
           {cp: 456, hp: 25, stardust: 600},
           {cp: 789, hp: 40, stardust: 800}
         ]},
-      ],
-      newPokemon: {name: 'Drowzee', values:[
-        {cp: 200, hp: 32, stardust: 1200}
-      ]}
+      ]
     };
-    console.log('constructor finished');
   }
 
-  addNewPokemon = () => {
-      this.state.pokemon.push(this.state.newPokemon);
+  addNewPokemon = (newPokemon) => {
+      this.state.pokemon.push(newPokemon);
       this.setState(this.state);
   }
 
@@ -59,7 +55,7 @@ class IVCalc extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <IVCalcAddForm pokemon={this.state.newPokemon} onAddPokemon={this.addNewPokemon} />
+            <IVCalcAddForm onAddPokemon={this.addNewPokemon} />
             {rows}
           </tbody>
         </table>
