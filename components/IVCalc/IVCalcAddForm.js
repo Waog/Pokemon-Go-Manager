@@ -2,10 +2,6 @@ import React from 'react';
 
 class IVCalcAddForm extends React.Component {
 
-  hello() {
-    console.log('hello!');
-  }
-
   render() {
     var hiho = this.hello;
     hiho();
@@ -21,7 +17,7 @@ class IVCalcAddForm extends React.Component {
         <td>14</td>
         <td>60%</td>
         <td>
-          <div className="btn btn-success" onClick={function(){console.log('hello ano!');}} >ADD to List</div>
+          <div className="btn btn-success" onClick={this.props.onAddPokemon} >ADD to List</div>
         </td>
       </tr>
     )
