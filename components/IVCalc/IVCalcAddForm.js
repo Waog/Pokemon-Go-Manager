@@ -3,8 +3,6 @@ import React from 'react';
 class IVCalcAddForm extends React.Component {
 
   render() {
-    var hiho = this.hello;
-    hiho();
     return (
       <tr>
         <td><input type="text" className="form-control" id="newName" placeholder="Pidgey" value={this.props.pokemon.name} /></td>
