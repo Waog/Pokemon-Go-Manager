@@ -11,6 +11,19 @@ class Pokemon extends React.Component {
     this.props.addValueSetListener(this.props.pokemon.id);
   }
 
+  getImage = () => {
+    try {
+      return require('../../node_modules/slack-pokemon-emoji/images/' + this.props.pokemon.name.toLowerCase() + '.png');
+    } catch(err) {
+      return require('./unknown.png');
+    }
+  }
+
+  handleNameChange = () => {
+    this.props.nameChangeListener(this.props.pokemon.id,
+      this.refs.name.value);
+  }
+
   render() {
     var rows = [];
     rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[0]} changeListener={this.props.changeValueSetListener} undeletable />);
@@ -21,8 +34,8 @@ class Pokemon extends React.Component {
       <div className="list-group">
         <div className="list-group-item list-group-item-success">
           <h1 className="row">
-            <div className="col-md-3">[IMAGE!]</div>
-            <div className="col-md-4">{this.props.pokemon.name}</div>
+            <div className="col-md-3"><img src={this.getImage()} alt={this.props.pokemon.name} /></div>
+            <div className="col-md-4"><input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} /></div>
             <div className="col-md-4">15 - 60%</div>
             <div className="btn btn-danger" onClick={this.handleDelete} >X</div>
           </h1>

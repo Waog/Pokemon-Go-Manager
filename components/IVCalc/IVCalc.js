@@ -21,7 +21,7 @@ class IVCalc extends React.Component {
   }
 
   addNewPokemon = () => {
-      this.state.pokemonSet.push({id: Math.random(), name: 'Pidgey', valueSets:[
+      this.state.pokemonSet.push({id: Math.random(), name: 'Pidgeyy', valueSets:[
           {id: Math.random(), cp: 123, hp: 22, stardust: 600}
         ]
       });
@@ -71,6 +71,17 @@ class IVCalc extends React.Component {
     this.setState(this.state);
   }
 
+  changePokemonName = (id, newName) => {
+    console.log('new name for id ', id, newName);
+    for (var pokeIndex = this.state.pokemonSet.length - 1; pokeIndex >= 0; pokeIndex--) {
+      var curPokemon = this.state.pokemonSet[pokeIndex];
+      if (curPokemon.id == id) {
+        curPokemon.name = newName;
+      }
+    }
+    this.setState(this.state);
+  }
+
   addNewValueSet = (pokemonId) => {
     for (var pokeIndex = this.state.pokemonSet.length - 1; pokeIndex >= 0; pokeIndex--) {
       var curPokemon = this.state.pokemonSet[pokeIndex];
@@ -85,7 +96,7 @@ class IVCalc extends React.Component {
   render() {
     var pokemonElements = [];
     this.state.pokemonSet.forEach((pokemon) => {
-      pokemonElements.push(<Pokemon pokemon={pokemon} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
+      pokemonElements.push(<Pokemon pokemon={pokemon} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
     return (
       <div className="iv-calc" role="main">
