@@ -18,7 +18,6 @@ class IVCalcPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <h1>IV Calculator</h1>
         <IVCalc pokemon={OWNED_POKEMON}/>
       </Layout>
     );
