@@ -2,6 +2,10 @@ import React from 'react';
 
 class IVCalcEntry extends React.Component {
 
+  deleteThis = () => {
+    this.props.onDelete(this.props.values.id);
+  }
+
   render() {
     var firstCol = this.props.name ? <td rowSpan={this.props.valCount}>{this.props.name}</td> : undefined;
     return (
@@ -18,7 +22,7 @@ class IVCalcEntry extends React.Component {
         <td>
           <button type="button" className="btn btn-success">ADD</button>
           <button type="button" className="btn btn-info">EDIT</button>
-          <button type="button" className="btn btn-danger">REMOVE</button>
+          <button type="button" onClick={this.deleteThis} className="btn btn-danger">REMOVE</button>
         </td>
       </tr>
     )

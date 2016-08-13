@@ -6,7 +6,7 @@ class IVCalcAddForm extends React.Component {
     super(props)
     this.state = {
       newPokemon: {name: 'Drowzee', values:[
-        {cp: 200, hp: 32, stardust: 1200}
+        {id: Math.random(), cp: 200, hp: 32, stardust: 1200}
       ]}
     };
   }
@@ -14,13 +14,14 @@ class IVCalcAddForm extends React.Component {
   handleChange = () => {
     this.setState({
       newPokemon: {name: this.refs.name.value, values:[
-        {cp: this.refs.cp.value, hp: this.refs.hp.value, stardust: this.refs.stardust.value}
+        {id: Math.random(), cp: this.refs.cp.value, hp: this.refs.hp.value, stardust: this.refs.stardust.value}
       ]}
     });
   }
 
   handleAdd = () => {
     this.props.onAddPokemon(this.state.newPokemon);
+    this.handleChange();
   }
 
   render() {

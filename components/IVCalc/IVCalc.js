@@ -8,12 +8,12 @@ class IVCalc extends React.Component {
     super(props)
     this.state = {
       pokemon: [
-        {name: 'Pidgey', values:[
-          {cp: 123, hp: 22, stardust: 600}
+        {id: 1, name: 'Pidgey', values:[
+          {id: 2, cp: 123, hp: 22, stardust: 600}
         ]},
-        {name: 'Rattata', values:[
-          {cp: 456, hp: 25, stardust: 600},
-          {cp: 789, hp: 40, stardust: 800}
+        {id: 3, name: 'Rattata', values:[
+          {id: 4, cp: 456, hp: 25, stardust: 600},
+          {id: 5, cp: 789, hp: 40, stardust: 800}
         ]},
       ]
     };
@@ -24,12 +24,28 @@ class IVCalc extends React.Component {
       this.setState(this.state);
   }
 
+  deleteValues = (id) => {
+    // TODO: query and manipulate json more elegant
+    for (var pokeIndex = this.state.pokemon.length - 1; pokeIndex >= 0; pokeIndex--) {
+      var curPokemon = this.state.pokemon[pokeIndex];
+      for (var valIndex = curPokemon.values.length - 1; valIndex >= 0; valIndex--) {
+        if (curPokemon.values[valIndex].id == id) {
+          curPokemon.values.splice(valIndex, 1);
+        }
+      }
+      if (curPokemon.values.length == 0) {
+        this.state.pokemon.splice(pokeIndex, 1);
+      }
+    }
+    this.setState(this.state);
+  }
+
   render() {
     var rows = [];
-    this.state.pokemon.forEach(function(pokemon) {
-      rows.push(<IVCalcEntry name={pokemon.name} values={pokemon.values[0]} valCount={pokemon.values.length} /> );
+    this.state.pokemon.forEach((pokemon) => {
+      rows.push(<IVCalcEntry name={pokemon.name} values={pokemon.values[0]} valCount={pokemon.values.length} onDelete={this.deleteValues} /> );
       for (var i = 1; i < pokemon.values.length; i++) {
-        rows.push(<IVCalcEntry values={pokemon.values[i]} />);
+        rows.push(<IVCalcEntry values={pokemon.values[i]} onDelete={this.deleteValues} />);
       }
     });
     return (
