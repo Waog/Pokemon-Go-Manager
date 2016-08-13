@@ -21,7 +21,7 @@ class IVCalcAddForm extends React.Component {
         <td>14</td>
         <td>60%</td>
         <td>
-          <input type="button" onClick={function() {alert("left")}} value="ADD to List" />
+          <div className="btn btn-success" onClick={function(){console.log('hello ano!');}} >ADD to List</div>
         </td>
       </tr>
     )

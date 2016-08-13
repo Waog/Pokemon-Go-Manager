@@ -23,7 +23,7 @@ class IVCalc extends React.Component {
     console.log('constructor finished');
   }
 
-  addNewPokemon() {
+  addNewPokemon = () => {
       console.log('addNewPokemon');
       this.state.pokemon.push(this.state.newPokemon);
       this.setState(this.state);
