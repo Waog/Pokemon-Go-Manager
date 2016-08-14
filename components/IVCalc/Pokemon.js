@@ -95,8 +95,6 @@ class Pokemon extends React.Component {
   }
 
   getIntersection = (rawSets) => {
-    let rawIVSet0 = rawSets[0].ivs;
-    let rawIVSet1 = rawSets[1].ivs;
 
     let ivsToRawMap = new Map();
 
