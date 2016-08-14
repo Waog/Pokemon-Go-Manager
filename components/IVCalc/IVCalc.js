@@ -7,22 +7,18 @@ class IVCalc extends React.Component {
     super(props)
     this.state = {
       pokemonSet: [
-        {id: 1, name: 'Pidgey', valueSets:[
-          {id: 2, cp: 123, hp: 22, stardust: 600}
+        {id: 1, name: 'Charmander', valueSets:[
+          {id: 1.1, cp: 518, hp: 54, stardust: 2500},
+          {id: 1.2, cp: 531, hp: 55, stardust: 2500}
         ]
-      },
-        {id: 3, name: 'Rattata', valueSets:[
-          {id: 4, cp: 456, hp: 25, stardust: 600},
-          {id: 5, cp: 789, hp: 40, stardust: 800}
-        ]
-      },
+      }
       ]
     };
   }
 
   addNewPokemon = () => {
-      this.state.pokemonSet.push({id: Math.random(), name: 'Pidgeyy', valueSets:[
-          {id: Math.random(), cp: 123, hp: 22, stardust: 600}
+      this.state.pokemonSet.push({id: Math.random(), name: 'Pidgey', valueSets:[
+          {id: Math.random(), cp: 76, hp: 26, stardust: 600}
         ]
       });
       this.setState(this.state);
