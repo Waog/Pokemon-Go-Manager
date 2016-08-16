@@ -14,10 +14,36 @@ class Pokemon extends React.Component {
 
   getImage = () => {
     try {
-      return require('../../node_modules/slack-pokemon-emoji/images/' + this.props.pokemon.name.toLowerCase() + '.png');
+      return require('../../node_modules/slack-pokemon-emoji/images/' + this.getImageName());
     } catch(err) {
       return require('./unknown.png');
     }
+  }
+
+  getImageName = () => {
+    if (this.isNidoranFemale()) {
+      return 'nidoran♀.png';
+    } else if (this.isNidoranMale()) {
+      return 'nidoran♂.png';
+    } else {
+      return this.props.pokemon.name.toLowerCase() + '.png';
+    }
+  }
+
+  isNidoranFemale = () => {
+    var regex = /nidoran.*(♀|f)/i;
+    if (this.props.pokemon.name.match(regex)) {
+      return true;
+    }
+    return false;
+  }
+
+  isNidoranMale = () => {
+    var regex = /nidoran.*(♂|m)/i;
+    if (!this.isNidoranFemale() && this.props.pokemon.name.match(regex)) {
+      return true;
+    }
+    return false;
   }
 
   handleNameChange = () => {
@@ -49,7 +75,7 @@ class Pokemon extends React.Component {
     this.fetchedIVs.raw = [];
     for (var valueSetIndex = 0; valueSetIndex < this.props.pokemon.valueSets.length; valueSetIndex++) {
       try {
-        this.fetchedIVs.raw[valueSetIndex] = ivCalculator.evaluate(this.props.pokemon.name, this.props.pokemon.valueSets[valueSetIndex].cp, this.props.pokemon.valueSets[valueSetIndex].hp, this.props.pokemon.valueSets[valueSetIndex].stardust);
+        this.fetchedIVs.raw[valueSetIndex] = ivCalculator.evaluate(this.getEvalName(), this.props.pokemon.valueSets[valueSetIndex].cp, this.props.pokemon.valueSets[valueSetIndex].hp, this.props.pokemon.valueSets[valueSetIndex].stardust);
       } catch (err) {
         this.fetchedIVs.error = 'unable to evaluate values';
         console.log('fetchIVs: ', this.fetchedIVs);
@@ -83,6 +109,16 @@ class Pokemon extends React.Component {
 
       this.fetchedIVs.perfectionMin = this.fetchedIVs.perfectionMin > curIVs.perfection ? curIVs.perfection : this.fetchedIVs.perfectionMin;
       this.fetchedIVs.perfectionMax = this.fetchedIVs.perfectionMax < curIVs.perfection ? curIVs.perfection : this.fetchedIVs.perfectionMax;
+    }
+  }
+
+  getEvalName() {
+    if(this.isNidoranFemale()) {
+      return 'nidoran_female';
+    } else if (this.isNidoranMale()) {
+      return 'nidoran_male';
+    } else {
+      return this.props.pokemon.name;
     }
   }
 
