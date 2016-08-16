@@ -90,9 +90,6 @@ class Pokemon extends React.Component {
 
     this.fetchedIVs.intersected = this.getIntersection(this.fetchedIVs.raw);
 
-    console.log('fetchIVs: ', this.fetchedIVs);
-    console.log('fetchedIVs.intersected: ', this.fetchedIVs.intersected);
-
     for (var ivIndex = 0; ivIndex < this.fetchedIVs.intersected.length; ivIndex++) {
       var curIVs = this.fetchedIVs.intersected[ivIndex];
       this.fetchedIVs.attMin = this.fetchedIVs.attMin > curIVs.attackIV ? curIVs.attackIV : this.fetchedIVs.attMin;
@@ -153,7 +150,6 @@ class Pokemon extends React.Component {
               return ivsWithMaxLevel;
             });
 
-    console.log('foo');
     return ivsToRawMapOnlyInAllSetsHighestLevel;
   }
 
