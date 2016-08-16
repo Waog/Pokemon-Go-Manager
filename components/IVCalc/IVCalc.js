@@ -92,7 +92,7 @@ class IVCalc extends React.Component {
   render() {
     var pokemonElements = [];
     this.state.pokemonSet.forEach((pokemon) => {
-      pokemonElements.push(<Pokemon pokemon={pokemon} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
+      pokemonElements.push(<Pokemon pokemon={pokemon} key={pokemon.id} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
     return (
       <div className="iv-calc" role="main">

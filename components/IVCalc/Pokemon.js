@@ -211,9 +211,9 @@ class Pokemon extends React.Component {
   render() {
     this.fetchIVs();
     var rows = [];
-    rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[0]} changeListener={this.props.changeValueSetListener} undeletable />);
+    rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[0]} key={this.props.pokemon.valueSets[0].id} changeListener={this.props.changeValueSetListener} undeletable />);
     for (var i = 1; i < this.props.pokemon.valueSets.length; i++) {
-      rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[i]} changeListener={this.props.changeValueSetListener} deleteListener={this.props.deleteValueSetListener} />);
+      rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[i]} key={this.props.pokemon.valueSets[i].id} changeListener={this.props.changeValueSetListener} deleteListener={this.props.deleteValueSetListener} />);
     }
     var detailedStats = this.getDetailedStats();
     var percentPerfection = this.getPercentPerfection();
