@@ -83,7 +83,6 @@ class Pokemon extends React.Component {
       }
       if (this.fetchedIVs.raw[valueSetIndex].error) {
         this.fetchedIVs.error = this.fetchedIVs.raw[valueSetIndex].error;
-        console.log('fetchIVs: ', this.fetchedIVs);
         return;
       }
     }

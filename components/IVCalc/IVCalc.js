@@ -1,5 +1,6 @@
 import React from 'react';
 import Pokemon from './Pokemon'
+var _ = require('lodash');
 
 class IVCalc extends React.Component {
 
@@ -16,12 +17,25 @@ class IVCalc extends React.Component {
     };
   }
 
+  idChanger = (value, key) => {
+    if (key == 'id') {
+      return Math.random();
+    }
+  }
+
   addNewPokemon = () => {
-      this.state.pokemonSet.push({id: Math.random(), name: 'Pidgey', valueSets:[
+
+    var newPokemon;
+    if (this.state.pokemonSet.length > 0) {
+      newPokemon = _.cloneDeepWith(this.state.pokemonSet[this.state.pokemonSet.length - 1], this.idChanger);
+    } else {
+      newPokemon = {id: Math.random(), name: 'Pidgey', valueSets:[
           {id: Math.random(), cp: 76, hp: 26, stardust: 600}
         ]
-      });
-      this.setState(this.state);
+      }
+    }
+    this.state.pokemonSet.push(newPokemon);
+    this.setState(this.state);
   }
 
   deleteValueSet = (id) => {
@@ -68,7 +82,6 @@ class IVCalc extends React.Component {
   }
 
   changePokemonName = (id, newName) => {
-    console.log('new name for id ', id, newName);
     for (var pokeIndex = this.state.pokemonSet.length - 1; pokeIndex >= 0; pokeIndex--) {
       var curPokemon = this.state.pokemonSet[pokeIndex];
       if (curPokemon.id == id) {
