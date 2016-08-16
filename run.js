@@ -17,8 +17,8 @@ const webpack = require('webpack');
 
 // TODO: Update configuration settings
 const config = {
-  title: 'React Static Boilerplate',        // Your website title
-  url: 'https://rsb.kriasoft.com',          // Your website URL
+  title: 'Pokemon Go Manager',              // Your website title
+  url: 'http://waog.net',                   // Your website URL
   project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
   trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
 };
@@ -109,7 +109,8 @@ tasks.set('publish', () => {
 //
 // Build website and launch it in a browser for testing (default)
 // -----------------------------------------------------------------------------
-tasks.set('start', () => {
+tasks.set('startDev', () => {
+  console.log('run.js -> startDev()');
   let count = 0;
   global.HMR = !process.argv.includes('--no-hmr'); // Hot Module Replacement (HMR)
   return run('clean').then(() => new Promise(resolve => {
@@ -149,6 +150,23 @@ tasks.set('start', () => {
     });
   }));
 });
+
+tasks.set('startRelease', () => {
+  console.log('run.js -> startRelease()');
+});
+
+tasks.set('start', () => {
+  console.log('run.js -> start()');
+  if (process.argv.includes('--release')) {
+    return Promise.resolve().then(() => run('startRelease'));
+  } else {
+    return Promise.resolve().then(() => run('startDev'));
+  }
+});
+
+
+
+console.log('run.js -> run(' + process.argv + ')');
 
 // Execute the specified task or default one. E.g.: node run build
 run(/^\w/.test(process.argv[2] || '') ? process.argv[2] : 'start' /* default */);
