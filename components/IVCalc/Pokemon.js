@@ -168,13 +168,12 @@ class Pokemon extends React.Component {
     } else if (this.fetchedIVs.intersected.length == 0) {
       return <p> No Combinations for these inputs</p>
     } else {
-      return <p>
-        {this.fetchedIVs.intersected.length} Combinations:
-        Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax};
-        Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax};
-        Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax};
-        Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};
-      </p>
+      return <div className="row">
+        <div className="col-md-3">{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</div>
+        <div className="col-md-3">Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax} {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}</div>
+        <div className="col-md-3">Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax} {this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)}</div>
+        <div className="col-md-3">Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax} {this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)}</div>
+      </div>
     }
   }
 
@@ -186,8 +185,8 @@ class Pokemon extends React.Component {
     }
   }
 
-  getProgressBar = () => {
-    if (this.fetchedIVs.perfectionMin > this.fetchedIVs.perfectionMax) {
+  getProgressBar = (minPercent, maxPercent) => {
+    if (minPercent > maxPercent) {
       return <div className="progress">
           <div className="progress-bar progress-bar-danger progress-bar-striped active" style={{width: 100 + '%'}}>
             <span className="sr-only">100% Complete (danger)</span>
@@ -195,14 +194,18 @@ class Pokemon extends React.Component {
         </div>
     } else {
       return <div className="progress">
-          <div className="progress-bar progress-bar-success" style={{width: this.getPerfectionMinPercent() + '%'}}>
-            <span className="sr-only">35% Complete (success)</span>
+          <div className="progress-bar progress-bar-success" style={{width: minPercent + '%'}}>
+            <span className="sr-only">{minPercent}% Complete (success)</span>
           </div>
-          <div className="progress-bar progress-bar-warning progress-bar-striped active" style={{width: (this.getPerfectionMaxPercent() - this.getPerfectionMinPercent()) + '%'}}>
-            <span className="sr-only">20% Complete (warning)</span>
+          <div className="progress-bar progress-bar-warning progress-bar-striped active" style={{width: (maxPercent - minPercent) + '%'}}>
+            <span className="sr-only">{maxPercent / minPercent}% Complete (warning)</span>
           </div>
         </div>
     }
+  }
+
+  getAttrProgressBar = (attrMin, attrMax) => {
+    return this.getProgressBar(attrMin / 15.0 * 100.0, attrMax / 15.0 * 100.0)
   }
 
   render() {
@@ -214,7 +217,7 @@ class Pokemon extends React.Component {
     }
     var detailedStats = this.getDetailedStats();
     var percentPerfection = this.getPercentPerfection();
-    var progressBar = this.getProgressBar();
+    var progressBar = this.getProgressBar(this.getPerfectionMinPercent(), this.getPerfectionMaxPercent());
     return (
       <div className="list-group">
         <div className="list-group-item list-group-item-success">
