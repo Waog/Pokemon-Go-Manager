@@ -153,10 +153,35 @@ tasks.set('startDev', () => {
 
 tasks.set('startRelease', () => {
   console.log('run.js -> startRelease()');
+  var express = require('express');
+  var app = express();
+
+  app.listen(3000, function () {
+    console.log('Example app listening on port 3000!');
+  });
+
+  console.log('Hosting ' + __dirname + '/public statically');
+  app.use('/', express.static(__dirname + '/public'));
+
+  const knownRoutes = require('./routes.json')
+    .filter(x => !x.path.includes(':'))
+    .map(x => x.path);
+  console.log('kown routes: ', knownRoutes);
+
+  knownRoutes.forEach(function(knownRoute) {
+    console.log('Mapping ' + knownRoute + ' to ' + __dirname + '/public/index.html');
+    app.get(knownRoute, function (req, res) {
+      res.sendFile(__dirname + '/public/index.html');
+    });
+  });
+
+  app.get('/ivcalc', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+  });
 });
 
 tasks.set('start', () => {
-  console.log('run.js -> start()');
+  console.log('run.js -> start(), args: ', process.argv);
   if (process.argv.includes('--release')) {
     return Promise.resolve().then(() => run('startRelease'));
   } else {
