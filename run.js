@@ -156,8 +156,8 @@ tasks.set('startRelease', () => {
   var express = require('express');
   var app = express();
 
-  app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+  app.listen(80, function () {
+    console.log('Release Mode listening on port 80!');
   });
 
   console.log('Hosting ' + __dirname + '/public statically');
