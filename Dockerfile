@@ -1,13 +1,11 @@
 FROM node:6
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+# Pull App
+WORKDIR /usr/src
+RUN git clone https://github.com/Waog/Pokemon-Go-Manager.git app
+WORKDIR app
 
-# Bundle app source
-COPY . /usr/src/app
-
-# Install app dependencies
+# install dependencies
 RUN npm install
 
 # Build App
