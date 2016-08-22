@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import Link from '../Link';
 
 class Navigation extends React.Component {
 
@@ -23,13 +24,13 @@ class Navigation extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Pokemon Go Manager</a>
+            <Link className="navbar-brand" to="#">Pokemon Go Manager</Link>
           </div>
           <div id="navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
-              <li className="active"><a href="/">Home</a></li>
-              <li><a href="/ivcalc">IV Calc</a></li>
-              <li><a href="/help">Help</a></li>
+              <li className="active"><Link to="/">Home</Link></li>
+              <li><Link to="/ivcalc">IV Calc</Link></li>
+              <li><Link to="/help">Help</Link></li>
             </ul>
           </div>
         </div>
