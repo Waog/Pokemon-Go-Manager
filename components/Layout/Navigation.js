@@ -28,9 +28,9 @@ class Navigation extends React.Component {
           </div>
           <div id="navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
-              <li className="active"><Link to="/">Home</Link></li>
-              <li><Link to="/ivcalc">IV Calc</Link></li>
-              <li><Link to="/help">Help</Link></li>
+              <li className={location.pathname == '/' ? 'active' : ''}><Link to="/">Home</Link></li>
+              <li className={location.pathname == '/ivcalc' ? 'active' : ''}><Link to="/ivcalc">IV Calc</Link></li>
+              <li className={location.pathname == '/help' ? 'active' : ''}><Link to="/help">Help</Link></li>
             </ul>
           </div>
         </div>
