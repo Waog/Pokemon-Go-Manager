@@ -32,8 +32,8 @@ class Layout extends React.Component {
     return (
       <div>
         <Navigation />
-        <div className="container below-nav-bar" ref={node => (this.root = node)}>
-          <div {...this.props} className={cx(s.content, this.props.className)} />
+        <div className="below-nav-bar" ref={node => (this.root = node)}>
+          <div {...this.props} />
         </div>
       </div>
     );

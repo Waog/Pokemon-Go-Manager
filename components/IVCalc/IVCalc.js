@@ -108,7 +108,7 @@ class IVCalc extends React.Component {
       pokemonElements.push(<Pokemon pokemon={pokemon} key={pokemon.id} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
     return (
-      <div className="iv-calc" role="main">
+      <div className="container iv-calc" role="main">
 
         <div className="page-header">
           <h1>IV Calculator</h1>
