@@ -8,17 +8,58 @@ body {
   background: linear-gradient(rgb(86, 218, 255), rgb(41, 124, 211), rgb(86, 218, 255)); /* Standard syntax (must be last) */
 }
 
+.navbar-inverse {
+    background-color: #337ab7;
+}
+
+.glyphicon-info-sign {
+    color: #337ab7;
+}
+
+.btn-danger {
+    background-color: rgb(209, 64, 52);
+    border-color: rgb(209, 64, 52);
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.progress {
+    margin-top: 1em;
+    margin-bottom: 5px;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    border-top: 0px none;
+}
+
+.table > thead > tr > th {
+    border-bottom: 0px none;
+}
+
+.table {
+  margin-top: 2em;
+}
+
+.subheading {
+  margin: 1em auto;
+}
+
 .pokecard {
   margin-top: 20px;
+}
+
+.pokeimage {
+  height: 200px;
+  width: auto;
 }
 
 .container-fluid {
   margin-top: 0px;
   border-radius: 0px;
-}
-
-.row div p {
-  margin-top: 1em;
+  margin-bottom: 40px;
 }
 
 /* Medium devices (tablets, 768px and up) */

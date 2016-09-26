@@ -1,5 +1,6 @@
 import React from 'react';
 import VisibleValues from './VisibleValues'
+
 const ivCalculator = require('pokemon-go-iv-calculator');
 
 class Pokemon extends React.Component {
@@ -164,7 +165,6 @@ class Pokemon extends React.Component {
       return <p> No Combinations for these inputs</p>
     } else {
       return <div className="row">
-        <div className="col-md-12"><h4>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</h4></div>
         <div className="col-md-4">
           {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}
           Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax}
@@ -234,12 +234,12 @@ class Pokemon extends React.Component {
       return (
         <span>
           {this.getPerfectionMinPercent()} - {this.getPerfectionMaxPercent()}%
-          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+          &nbsp;<h4 className="tooltip-trigger glyphicon glyphicon-info-sign">
             <div className="tooltiptext">
               This shows how <em>perfect</em> your Pokemon is. <br/>
               It is at least {this.getPerfectionMinPercent()}% and at most {this.getPerfectionMaxPercent()}% perfect.
             </div>
-          </span>
+          </h4>
         </span>
       )
     }
@@ -283,8 +283,8 @@ class Pokemon extends React.Component {
         <div className="col-md-12">
           <div className="pokeball-wrapper"><img src="./pokemongo_bootstrap/images/pokeball.png" /></div>
           <div className="enhanced">
-            <h1 className="row">
-              <div className="col-md-3"><img className="img-responsive center-block" src={this.getImage()} alt={this.props.pokemon.name} /></div>
+            <h1 className="row vertical-align">
+              <div className="col-md-3"><img className="img-responsive center-block pokeimage" src={this.getImage()} alt={this.props.pokemon.name} /></div>
               <div className="col-md-8">
                 <div className="form-group input-group input-group-lg">
                   <input type="text" className="form-control" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
@@ -294,14 +294,14 @@ class Pokemon extends React.Component {
                 </div>
                 {progressBar}
                 {percentPerfection}
+                <p>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</p>
               </div>
               <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-trash" onClick={this.handleDelete} >
                 <span className="tooltiptext-left" style={{width: 12 + 'em'}}>Delete this Pokemon</span>
               </div>
             </h1>
-            <hr />
             {detailedStats}
-            <hr />
+
             <table className="table">
               <thead>
                 <tr>

@@ -13,6 +13,8 @@ import Layout from '../../components/Layout';
 import s from './styles.css';
 import { title, html } from './index.md';
 
+import Link from '../../components/Link';
+
 class HomePage extends React.Component {
 
   static propTypes = {
@@ -40,34 +42,12 @@ class HomePage extends React.Component {
                 <img className="img-responsive center-block" src="./pikachu.svg" alt="pikachu" />
               </div>
               <div className="col-md-4 col-xs-12">
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p className="text-center"><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                <h3 className="text-center">Get your Pokemons Potential</h3>
+                <p>Figure out how strong your Pokemon can become and only spend resources on your best exemplars.</p>
+                <p className="text-center"><Link className="btn btn-primary btn-lg" to="/ivcalc" role="button">GOTTA SCAN 'EM ALL &raquo;</Link></p>
               </div>
               <div className="hidden-xs hidden-sm col-md-4">
                 <img className="img-responsive center-block" src="./pikachu.svg" alt="pikachu" />
-              </div>
-            </div>
-          </div> {/* end row */}
-        </div>
-
-
-
-        <div className="container text-justify">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="enhanced">
-                <div className="row vertical-align">
-                  <div className="col-md-4 col-xs-6">
-                    <img className="img-responsive center-block" src="./logo.svg" alt="pikachu" />
-                  </div>
-                  <div className="col-md-4 col-xs-12">
-                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                    <p className="text-center"><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-                  </div>
-                  <div className="col-md-4 col-xs-6">
-                    <img className="img-responsive center-block" src="./pikachu.svg" alt="pikachu" />
-                  </div>
-                </div>
               </div>
             </div>
           </div> {/* end row */}
@@ -80,8 +60,8 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center">Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <h2 className="text-center"><span className="glyphicon glyphicon-search"></span> Scan</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                 <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
               </div>
             </div>
@@ -90,8 +70,8 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center">Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <h2 className="text-center"><span className="glyphicon glyphicon-asterisk"></span> Rate</h2>
+                <p>Donec id elit non mi metus. Fusce tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                 <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
               </div>
             </div>
@@ -100,7 +80,7 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center">Heading</h2>
+                <h2 className="text-center"><span className="glyphicon glyphicon-ok"></span> Check</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                 <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
               </div>
