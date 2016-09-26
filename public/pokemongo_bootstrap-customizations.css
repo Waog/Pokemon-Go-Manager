@@ -17,9 +17,16 @@ body {
   border-radius: 0px;
 }
 
-.vertical-align {
-    display: flex;
-    align-items: center;
+.row div p {
+  margin-top: 1em;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 992px) {
+    .row.vertical-align {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .tooltip-trigger .tooltiptext,
