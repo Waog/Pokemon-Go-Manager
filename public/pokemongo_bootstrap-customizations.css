@@ -1,0 +1,28 @@
+body {
+  padding-top: 50px;
+  background-image: none;
+  background: rgb(71, 188, 253); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgb(86, 218, 255), rgb(41, 124, 211), rgb(86, 218, 255)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(86, 218, 255), rgb(41, 124, 211), rgb(86, 218, 255)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(86, 218, 255), rgb(41, 124, 211), rgb(86, 218, 255)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(86, 218, 255), rgb(41, 124, 211), rgb(86, 218, 255)); /* Standard syntax (must be last) */
+}
+
+.pokecard {
+  margin-top: 20px;
+}
+
+.container-fluid {
+  margin-top: 0px;
+  border-radius: 0px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}

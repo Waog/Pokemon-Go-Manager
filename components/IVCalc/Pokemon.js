@@ -164,10 +164,10 @@ class Pokemon extends React.Component {
       return <p> No Combinations for these inputs</p>
     } else {
       return <div className="row">
-        <div className="col-md-12">{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</div>
-        <div className="col-md-4">Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax} {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}</div>
-        <div className="col-md-4">Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax} {this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)}</div>
-        <div className="col-md-4">Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax} {this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)}</div>
+        <div className="col-md-12"><h4>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</h4></div>
+        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)} Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax}</div>
+        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)} Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax}</div>
+        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)} Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax}</div>
       </div>
     }
   }
@@ -214,43 +214,43 @@ class Pokemon extends React.Component {
     var percentPerfection = this.getPercentPerfection();
     var progressBar = this.getProgressBar(this.getPerfectionMinPercent(), this.getPerfectionMaxPercent());
     return (
-      <div className="list-group text-center">
-        <div className="list-group-item list-group-item-success">
-          <h1 className="row">
-            <div className="col-md-3"><img className="img-responsive" src={this.getImage()} alt={this.props.pokemon.name} /></div>
-            <div className="col-md-8">
-              <div className="form-group">
-                <input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
+      <div className="row text-center pokecard">
+        <div className="col-md-12">
+          <div className="pokeball-wrapper"><img src="./pokemongo_bootstrap/images/pokeball.png" /></div>
+          <div className="enhanced">
+            <h1 className="row">
+              <div className="col-md-3"><img className="img-responsive center-block" src={this.getImage()} alt={this.props.pokemon.name} /></div>
+              <div className="col-md-8">
+                <div className="form-group">
+                  <input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
+                </div>
+                {progressBar}
+                {percentPerfection}
               </div>
-
-              {progressBar}
-              {percentPerfection}
-            </div>
-            <div className="btn btn-danger" onClick={this.handleDelete} >X</div>
-          </h1>
-        </div>
-        <div className="list-group-item">
-          {detailedStats}
-        </div>
-        <div className="list-group-item">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>CP</th>
-                <th>HP</th>
-                <th>Stardust</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows}
-              <tr>
-                <td colSpan="4">
-                  <div className="btn btn-success" onClick={this.handleAddValueSet} >+</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              <div className="btn btn-danger" onClick={this.handleDelete} >X</div>
+            </h1>
+            <hr />
+            {detailedStats}
+            <hr />
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>CP</th>
+                  <th>HP</th>
+                  <th>Stardust</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows}
+                <tr>
+                  <td colSpan="4">
+                    <div className="btn btn-success" onClick={this.handleAddValueSet} >+</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     )

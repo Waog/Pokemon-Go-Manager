@@ -26,11 +26,31 @@ class HomePage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
+
+        <div className="container-fluid enhanced text-justify">
+          <div className="container">
+            <div className="row vertical-align">
+              <div className="col-md-4">
+                <img className="img-responsive" src="./logo.svg" alt="pikachu" />
+              </div>
+              <div className="col-md-4">
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p className="text-center"><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+              </div>
+              <div className="col-md-4">
+                <img className="img-responsive" src="./pikachu.svg" alt="pikachu" />
+              </div>
+            </div>
+          </div> {/* end row */}
+        </div>
+
+
+
         <div className="container text-justify">
           <div className="row">
             <div className="col-md-12">
               <div className="enhanced">
-                <div className="row">
+                <div className="row vertical-align">
                   <div className="col-md-4">
                     <img className="img-responsive" src="./logo.svg" alt="pikachu" />
                   </div>

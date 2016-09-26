@@ -108,16 +108,18 @@ class IVCalc extends React.Component {
       pokemonElements.push(<Pokemon pokemon={pokemon} key={pokemon.id} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
     return (
-      <div className="container iv-calc" role="main">
+      <div className="iv-calc" role="main">
 
-        <div className="page-header">
+        <div className="container page-header">
           <img className="img-responsive" src="./logo-horizontal.svg" alt="pikachu" />
           <h1 className="text-center">IV Calculator</h1>
         </div>
-
-        {pokemonElements}
-
-        <div className="btn btn-success" onClick={this.addNewPokemon} >+</div>
+        <div className="container">
+          {pokemonElements}
+        </div>
+        <div className="container text-center">
+          <div className="btn btn-success" onClick={this.addNewPokemon} >Add New Pokemon</div>
+        </div>
       </div>
     )
   }
