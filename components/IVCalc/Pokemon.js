@@ -164,10 +164,10 @@ class Pokemon extends React.Component {
       return <p> No Combinations for these inputs</p>
     } else {
       return <div className="row">
-        <div className="col-md-3">{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</div>
-        <div className="col-md-3">Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax} {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}</div>
-        <div className="col-md-3">Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax} {this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)}</div>
-        <div className="col-md-3">Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax} {this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)}</div>
+        <div className="col-md-12">{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</div>
+        <div className="col-md-4">Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax} {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}</div>
+        <div className="col-md-4">Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax} {this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)}</div>
+        <div className="col-md-4">Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax} {this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)}</div>
       </div>
     }
   }
@@ -214,12 +214,15 @@ class Pokemon extends React.Component {
     var percentPerfection = this.getPercentPerfection();
     var progressBar = this.getProgressBar(this.getPerfectionMinPercent(), this.getPerfectionMaxPercent());
     return (
-      <div className="list-group">
+      <div className="list-group text-center">
         <div className="list-group-item list-group-item-success">
           <h1 className="row">
-            <div className="col-md-3"><img src={this.getImage()} alt={this.props.pokemon.name} /></div>
-            <div className="col-md-4"><input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} /></div>
-            <div className="col-md-4">
+            <div className="col-md-3"><img className="img-responsive" src={this.getImage()} alt={this.props.pokemon.name} /></div>
+            <div className="col-md-8">
+              <div className="form-group">
+                <input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
+              </div>
+
               {progressBar}
               {percentPerfection}
             </div>
