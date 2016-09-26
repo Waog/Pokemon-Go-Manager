@@ -34,6 +34,7 @@ class Layout extends React.Component {
         <Navigation />
         <div className="below-nav-bar" ref={node => (this.root = node)}>
           <div {...this.props} />
+          <Footer />
         </div>
       </div>
     );

@@ -82,19 +82,14 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center"><span className="glyphicon glyphicon-ok"></span> Analyse</h2>
+                <h2 className="text-center"><span className="glyphicon glyphicon-stats"></span> Analyse</h2>
                 <p>Get detailed statistics of all your pokemon.</p>
                 <p>Figure out their hidden stats like Attack, Defense and Stamnia values. Refine the results to any level before training your Pokemon.</p>
                 <p className="text-center"><Link className="btn btn-default" to="/help" role="button">Learn more &raquo;</Link></p>
               </div>
             </div>
           </div> {/* end row */}
-          <hr />
-          <footer>
-            <p>&copy; 2016 <a href="http://oliverstadie.com" target="_blank">Oliver Stadie</a></p>
-          </footer>
         </div> {/* end container */}
-
       </Layout>
     );
   }

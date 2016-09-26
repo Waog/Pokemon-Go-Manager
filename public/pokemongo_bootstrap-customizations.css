@@ -12,7 +12,7 @@ body {
     background-color: #337ab7;
 }
 
-.glyphicon-info-sign {
+.glyphicon-info-sign, .glyphicon-question-sign, .help-question {
     color: #337ab7;
 }
 
@@ -54,6 +54,18 @@ body {
 .pokeimage {
   height: 200px;
   width: auto;
+}
+
+.help-container {
+  margin-top: 40px;
+}
+
+.help-div {
+  margin-bottom: 20px;
+}
+
+div.container.help-container > div > div > div.enhanced {
+  padding: 2em;
 }
 
 .container-fluid {

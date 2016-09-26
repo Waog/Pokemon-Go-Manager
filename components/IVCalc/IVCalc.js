@@ -112,7 +112,7 @@ class IVCalc extends React.Component {
 
         <div className="container page-header">
           <img className="img-responsive" src="./logo-horizontal.svg" alt="pikachu" />
-          <img className="img-responsive center-block subheading" style={{width: 30 + '%'}} src="./iv-calc-subheading.svg" alt="IV Calculator" />
+          <img className="img-responsive center-block subheading" style={{height: 4.5 + 'em'}} src="./iv-calc-subheading.svg" alt="IV Calculator" />
         </div>
         <div className="container">
           {pokemonElements}

@@ -17,6 +17,10 @@
     "page": "./pages/about"
   },
   {
+    "path": "/help",
+    "page": "./pages/help"
+  },
+  {
     "path": "/ivcalc",
     "page": "./pages/ivcalcpage"
   },
