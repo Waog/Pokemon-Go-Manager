@@ -118,7 +118,16 @@ class IVCalc extends React.Component {
           {pokemonElements}
         </div>
         <div className="container text-center">
-          <div className="btn btn-success" onClick={this.addNewPokemon} >Add New Pokemon</div>
+          <div className="btn btn-success tooltip-trigger glyphicon glyphicon-plus" onClick={this.addNewPokemon} >
+            <span style={{fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif'}}>&nbsp;Add Another Pokemon</span>
+            <span className="tooltiptext">
+              <p>Add another value set.
+              Use this to reduce the possible combinations of your pokemons IV values.</p>
+
+              <p>After entering CP, HP and Stardust for your Pokemon level it up once and enter the new values.
+              If you do this often enough you'll get the precise IV values of your pokemon.</p>
+            </span>
+          </div>
         </div>
       </div>
     )

@@ -165,18 +165,83 @@ class Pokemon extends React.Component {
     } else {
       return <div className="row">
         <div className="col-md-12"><h4>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</h4></div>
-        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)} Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax}</div>
-        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)} Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax}</div>
-        <div className="col-md-4">{this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)} Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax}</div>
+        <div className="col-md-4">
+          {this.getAttrProgressBar(this.fetchedIVs.attMin, this.fetchedIVs.attMax)}
+          Att: {this.fetchedIVs.attMin} - {this.fetchedIVs.attMax}
+          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+            <div className="tooltiptext">
+              <p>Your {this.props.pokemon.name} has an <em>IV attack bonus</em> of at least {this.fetchedIVs.attMin} and at most {this.fetchedIVs.attMax}.</p>
+              <p>
+                Pokemons can have an <em>IV attack bonus</em> between 0 and 15. The higher the attack, the more damage the Pokemon deals in battles.
+                The <em>IV attack bonus</em> just makes up a small part of the <em>total attack value</em>, which is the sum of a pokemons <em>base attack value</em> and it's <em>IV attack bonus</em>.
+              </p>
+              <p>
+                E.g. Mewtwo has a <em>base attack value</em> of 284. Together with his <em>IV attack bonus</em> (0 to 15), Mewtwos <em>total attack value</em> is between 284 and 299.
+              </p>
+            </div>
+          </span>
+        </div>
+        <div className="col-md-4">
+          {this.getAttrProgressBar(this.fetchedIVs.defMin, this.fetchedIVs.defMax)}
+          Def: {this.fetchedIVs.defMin} - {this.fetchedIVs.defMax}
+          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+            <div className="tooltiptext">
+              <p>Your {this.props.pokemon.name} has an <em>IV defense bonus</em> of at least {this.fetchedIVs.defMin} and at most {this.fetchedIVs.defMax}.</p>
+              <p>
+                Pokemons can have an <em>IV defense bonus</em> between 0 and 15. The higher the defense, the less damage the Pokemon takes in battles.
+                The <em>IV defense bonus</em> just makes up a small part of the <em>total defense value</em>, which is the sum of a pokemons <em>base defense value</em> and it's <em>IV defense bonus</em>.
+              </p>
+              <p>
+                E.g. Mewtwo has a <em>base defense value</em> of 202. Together with his <em>IV defense bonus</em> (0 to 15), Mewtwos <em>total defense value</em> is between 202 and 217.
+              </p>
+            </div>
+          </span>
+        </div>
+        <div className="col-md-4">
+          {this.getAttrProgressBar(this.fetchedIVs.stamMin, this.fetchedIVs.stamMax)}
+          Stamnia: {this.fetchedIVs.stamMin} - {this.fetchedIVs.stamMax}
+          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+            <div className="tooltiptext">
+              <p>Your {this.props.pokemon.name} has an <em>IV stamnia bonus</em> of at least {this.fetchedIVs.stamMin} and at most {this.fetchedIVs.stamMax}.</p>
+              <p>
+                Pokemons can have an <em>IV stamnia bonus</em> between 0 and 15. The higher the stamnia, the more hit points the pokemon has.
+                The <em>IV stamnia bonus</em> just makes up a small part of the <em>total stamnia value</em>, which is the sum of a pokemons <em>base stamnia value</em> and it's <em>IV stamnia bonus</em>.
+              </p>
+              <p>
+                E.g. Mewtwo has a <em>base stamnia value</em> of 212. Together with his <em>IV stamnia bonus</em> (0 to 15), Mewtwos <em>total stamnia value</em> is between 212 and 227.
+              </p>
+            </div>
+          </span>
+        </div>
       </div>
     }
   }
 
   getPercentPerfection = () => {
     if (this.fetchedIVs.perfectionMin > this.fetchedIVs.perfectionMax) {
-      return <span>No Combinations</span>
+      return (
+        <span>
+          No Combinations
+          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+            <div className="tooltiptext">
+              No {this.props.pokemon.name} with these values exists. <br/>
+              Please check if your entered values are correct.
+            </div>
+          </span>
+        </span>
+      )
     } else {
-      return <span>{this.getPerfectionMinPercent()} - {this.getPerfectionMaxPercent()}%</span>
+      return (
+        <span>
+          {this.getPerfectionMinPercent()} - {this.getPerfectionMaxPercent()}%
+          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+            <div className="tooltiptext">
+              This shows how <em>perfect</em> your Pokemon is. <br/>
+              It is at least {this.getPerfectionMinPercent()}% and at most {this.getPerfectionMaxPercent()}% perfect.
+            </div>
+          </span>
+        </span>
+      )
     }
   }
 
@@ -221,13 +286,18 @@ class Pokemon extends React.Component {
             <h1 className="row">
               <div className="col-md-3"><img className="img-responsive center-block" src={this.getImage()} alt={this.props.pokemon.name} /></div>
               <div className="col-md-8">
-                <div className="form-group">
-                  <input type="text" className="form-control input-lg" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
+                <div className="form-group input-group input-group-lg">
+                  <input type="text" className="form-control" ref="name" placeholder="Pidgey" value={this.props.pokemon.name} onChange={this.handleNameChange} />
+                  <span className="input-group-addon tooltip-trigger glyphicon glyphicon-info-sign">
+                    <span className="tooltiptext-left">Enter the <em>name</em> of the Pokemon to analyze here, e.g. 'Rattata' or 'Pidgey'</span>
+                  </span>
                 </div>
                 {progressBar}
                 {percentPerfection}
               </div>
-              <div className="btn btn-danger" onClick={this.handleDelete} >X</div>
+              <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-trash" onClick={this.handleDelete} >
+                <span className="tooltiptext-left" style={{width: 12 + 'em'}}>Delete this Pokemon</span>
+              </div>
             </h1>
             <hr />
             {detailedStats}
@@ -235,9 +305,42 @@ class Pokemon extends React.Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>CP</th>
-                  <th>HP</th>
-                  <th>Stardust</th>
+                  <th>
+                    CP
+                    &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+                      <div className="tooltiptext-right">
+                        <p>Enter the current CP value of your Pokemon here.</p>
+                        <p>
+                          You can find the CP in the top of the Pokemons details screen:
+                          <img className="img-responsive center-block img-rounded" src={require('./cp.png')} />
+                        </p>
+                      </div>
+                    </span>
+                  </th>
+                  <th>
+                    HP
+                    &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+                      <div className="tooltiptext">
+                        <p>Enter the current max HP value of your Pokemon here.</p>
+                        <p>
+                          You can find the max HP below the Pokemons name in the details screen:
+                          <img className="img-responsive center-block img-rounded" src={require('./hp.png')} />
+                        </p>
+                      </div>
+                    </span>
+                  </th>
+                  <th>
+                    Stardust
+                    &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+                      <div className="tooltiptext-left">
+                        <p>Enter the Stardust cost for the next <em>Power Up</em> of your Pokemon here.</p>
+                        <p>
+                          You can find the Stardust costs on the Power Up Button in the Pokemons details screen:
+                          <img className="img-responsive center-block img-rounded" src={require('./stardust-costs.png')} />
+                        </p>
+                      </div>
+                    </span>
+                  </th>
                   <th></th>
                 </tr>
               </thead>
@@ -245,7 +348,15 @@ class Pokemon extends React.Component {
                 {rows}
                 <tr>
                   <td colSpan="4">
-                    <div className="btn btn-success" onClick={this.handleAddValueSet} >+</div>
+                    <div className="btn btn-success tooltip-trigger glyphicon glyphicon-plus" onClick={this.handleAddValueSet} >
+                      <span className="tooltiptext">
+                        <p>Add another value set.
+                        Use this to reduce the possible combinations of your pokemons IV values.</p>
+
+                        <p>After entering CP, HP and Stardust for your Pokemon level it up once and enter the new values.
+                        If you do this often enough you'll get the precise IV values of your pokemon.</p>
+                      </span>
+                    </div>
                   </td>
                 </tr>
               </tbody>

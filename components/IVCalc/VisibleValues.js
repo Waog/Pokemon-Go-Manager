@@ -16,7 +16,13 @@ class VisibleValues extends React.Component {
   }
 
   render() {
-    var deleteBtn = this.props.undeletable ? undefined : <div className="btn btn-danger" onClick={this.handleDelete} >-</div>;
+    var deleteBtn = this.props.undeletable ? undefined :
+      <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-minus" onClick={this.handleDelete} >
+        <span className="tooltiptext-left">
+          <p>Remove a value set for this pokemon.
+          Use this to widen the possible combinations of your pokemons IV values.</p>
+        </span>
+      </div>;
     return (
       <tr>
         <td><input type="number" className="form-control" ref="cp" placeholder="123" value={this.props.valueSet.cp} onChange={this.handleChange} /></td>

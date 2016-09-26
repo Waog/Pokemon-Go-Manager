@@ -17,12 +17,75 @@ body {
   border-radius: 0px;
 }
 
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .vertical-align {
     display: flex;
     align-items: center;
+}
+
+.tooltip-trigger .tooltiptext,
+.tooltip-trigger .tooltiptext-left,
+.tooltip-trigger .tooltiptext-right,
+.tooltip-trigger .tooltiptext-inside-top,
+.tooltip-trigger .tooltiptext-inside-bottom,
+.tooltip-trigger .tooltiptext-inside-bottom-right {
+    /**/ visibility: hidden; /**/
+
+    font-size: medium;
+    test-align: left;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 25em;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: left;
+    border-radius: 12px;
+    padding: 1em;
+    white-space: normal;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 10;
+}
+
+.tooltip-trigger .tooltiptext {
+    bottom: 100%;
+    right: 50%;
+    margin-right: -12.5em;
+}
+
+.tooltip-trigger .tooltiptext-left {
+    bottom: 100%;
+    right: 50%;
+}
+
+.tooltip-trigger .tooltiptext-right {
+    bottom: 100%;
+    left: 50%;
+}
+
+.tooltip-trigger .tooltiptext-inside-top {
+    top: 2em;
+    right: 50%;
+    margin-right: -12.5em;
+}
+
+.tooltip-trigger .tooltiptext-inside-bottom {
+    bottom: 2em;
+    right: 50%;
+    margin-right: -12.5em;
+}
+
+.tooltip-trigger .tooltiptext-inside-bottom-right {
+    bottom: 2em;
+    right: 2em;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-trigger:hover .tooltiptext,
+.tooltip-trigger:hover .tooltiptext-left,
+.tooltip-trigger:hover .tooltiptext-right,
+.tooltip-trigger:hover .tooltiptext-inside-top,
+.tooltip-trigger:hover .tooltiptext-inside-bottom,
+.tooltip-trigger:hover .tooltiptext-inside-bottom-right {
+    visibility: visible;
 }
