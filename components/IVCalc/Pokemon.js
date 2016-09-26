@@ -157,6 +157,19 @@ class Pokemon extends React.Component {
     return 'a' + rawIVs.attackIV + '_d' + rawIVs.defenseIV + '_s' + rawIVs.staminaIV;
   }
 
+  getCombinationsAndLevel = () => {
+
+    if (this.fetchedIVs.error) {
+      return null;
+    } else if (this.fetchedIVs.intersected.length == 0) {
+      return <p> No Combinations for these inputs</p>
+    } else {
+      return <div className="row">
+        <p>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</p>
+      </div>
+    }
+  }
+
   getDetailedStats = () => {
 
     if (this.fetchedIVs.error) {
@@ -222,12 +235,12 @@ class Pokemon extends React.Component {
       return (
         <span>
           No Combinations
-          &nbsp;<span className="tooltip-trigger glyphicon glyphicon-info-sign">
+          &nbsp;<h4 className="tooltip-trigger glyphicon glyphicon-info-sign">
             <div className="tooltiptext">
               No {this.props.pokemon.name} with these values exists. <br/>
               Please check if your entered values are correct.
             </div>
-          </span>
+          </h4>
         </span>
       )
     } else {
@@ -276,6 +289,7 @@ class Pokemon extends React.Component {
       rows.push(<VisibleValues valueSet={this.props.pokemon.valueSets[i]} key={this.props.pokemon.valueSets[i].id} changeListener={this.props.changeValueSetListener} deleteListener={this.props.deleteValueSetListener} />);
     }
     var detailedStats = this.getDetailedStats();
+    var combinationsAndLevel = this.getCombinationsAndLevel();
     var percentPerfection = this.getPercentPerfection();
     var progressBar = this.getProgressBar(this.getPerfectionMinPercent(), this.getPerfectionMaxPercent());
     return (
@@ -294,7 +308,7 @@ class Pokemon extends React.Component {
                 </div>
                 {progressBar}
                 {percentPerfection}
-                <p>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</p>
+                {combinationsAndLevel}
               </div>
               <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-trash delete-pokemon-btn" onClick={this.handleDelete} >
                 <span className="tooltiptext-left" style={{width: 12 + 'em'}}>Delete this Pokemon</span>
