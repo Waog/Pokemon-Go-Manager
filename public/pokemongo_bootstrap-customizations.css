@@ -102,7 +102,7 @@ footer p a {
     /**/ visibility: hidden; /**/
 
     font-size: medium;
-    test-align: left;
+    text-align: left;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 25em;
 
@@ -159,4 +159,21 @@ footer p a {
 .tooltip-trigger:hover .tooltiptext-inside-bottom,
 .tooltip-trigger:hover .tooltiptext-inside-bottom-right {
     visibility: visible;
+}
+
+/* Fixed tooltip locations on small screens */
+@media (max-width: 992px) {
+  .tooltip-trigger .tooltiptext,
+  .tooltip-trigger .tooltiptext-left,
+  .tooltip-trigger .tooltiptext-right,
+  .tooltip-trigger .tooltiptext-inside-top,
+  .tooltip-trigger .tooltiptext-inside-bottom,
+  .tooltip-trigger .tooltiptext-inside-bottom-right {
+      position: fixed;
+      top: 5em;
+      left: 5%;
+      width: 90%;
+      height: 60%;
+      overflow-y: auto;
+  }
 }
