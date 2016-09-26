@@ -61,8 +61,9 @@ class HomePage extends React.Component {
               </div>
               <div className="enhanced">
                 <h2 className="text-center"><span className="glyphicon glyphicon-search"></span> Scan</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <p>Scan any Pokemon you catch for it's potential.</p>
+                <p>Only train the Pokemons with the best genes. Become the best trainer by finding out your Pokemons hidden stats.</p>
+                <p className="text-center"><Link className="btn btn-default" to="/ivcalc" role="button">Start Scanning &raquo;</Link></p>
               </div>
             </div>
             <div className="col-md-4">
@@ -70,9 +71,10 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center"><span className="glyphicon glyphicon-asterisk"></span> Rate</h2>
-                <p>Donec id elit non mi metus. Fusce tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2 className="text-center"><span className="glyphicon glyphicon-ok"></span> Rate</h2>
+                <p>See how good your Pokemon are at a glance.</p>
+                <p>Pokemon Go Manager's IV Calculator rates your Pokemon for their overall potential. No need to dig into details of all your Pokemons.</p>
+                <p className="text-center"><Link className="btn btn-default" to="/help" role="button">Learn more &raquo;</Link></p>
               </div>
             </div>
             <div className="col-md-4">
@@ -80,15 +82,16 @@ class HomePage extends React.Component {
                 <img src="./pokemongo_bootstrap/images/pokeball.png" />
               </div>
               <div className="enhanced">
-                <h2 className="text-center"><span className="glyphicon glyphicon-ok"></span> Check</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p className="text-center"><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2 className="text-center"><span className="glyphicon glyphicon-ok"></span> Analyse</h2>
+                <p>Get detailed statistics of all your pokemon.</p>
+                <p>Figure out their hidden stats like Attack, Defense and Stamnia values. Refine the results to any level before training your Pokemon.</p>
+                <p className="text-center"><Link className="btn btn-default" to="/help" role="button">Learn more &raquo;</Link></p>
               </div>
             </div>
           </div> {/* end row */}
           <hr />
           <footer>
-            <p>&copy; 2016 Company, Inc.</p>
+            <p>&copy; 2016 <a href="http://oliverstadie.com" target="_blank">Oliver Stadie</a></p>
           </footer>
         </div> {/* end container */}
 

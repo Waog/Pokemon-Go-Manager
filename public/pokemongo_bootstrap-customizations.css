@@ -62,6 +62,11 @@ body {
   margin-bottom: 40px;
 }
 
+footer p a {
+  color: #21295a;
+  text-decoration: none;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 992px) {
     .row.vertical-align {
