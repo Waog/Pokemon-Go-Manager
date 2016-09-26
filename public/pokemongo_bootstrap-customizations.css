@@ -68,6 +68,12 @@ div.container.help-container > div > div > div.enhanced {
   padding: 2em;
 }
 
+.delete-pokemon-btn {
+  position: absolute;
+  top: 1em;
+  right: 2em;
+}
+
 .container-fluid {
   margin-top: 0px;
   border-radius: 0px;

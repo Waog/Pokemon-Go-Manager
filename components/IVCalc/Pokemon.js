@@ -296,7 +296,7 @@ class Pokemon extends React.Component {
                 {percentPerfection}
                 <p>{this.fetchedIVs.intersected.length} Combinations; Level: {this.fetchedIVs.levelMin} - {this.fetchedIVs.levelMax};</p>
               </div>
-              <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-trash" onClick={this.handleDelete} >
+              <div className="btn btn-danger tooltip-trigger glyphicon glyphicon-trash delete-pokemon-btn" onClick={this.handleDelete} >
                 <span className="tooltiptext-left" style={{width: 12 + 'em'}}>Delete this Pokemon</span>
               </div>
             </h1>
