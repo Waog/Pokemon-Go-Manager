@@ -13,7 +13,36 @@ import Link from '../Link';
 
 class Navigation extends React.Component {
 
+
+  constructor(props) {
+    super(props)
+    this.state = { googleUser: null};
+  }
+
+  componentDidMount() {
+    attachSigninWhenRdy(document.getElementById('navbarLoginBtn'));
+    executeWhenLoginRdy(this.onLogin);
+  }
+
+  getLoginBtn = () => {
+    if (this.state.googleUser) {
+      return (
+        <li><p className="nav navbar-text">Hi {this.state.googleUser.getBasicProfile().getGivenName()}</p></li>
+      );
+    } else {
+      return (
+        <li><Link id="navbarLoginBtn" to="#"><img className="google-login-btn" src="./google-login.png" alt="Google Logo" /> Sign in</Link></li>
+      );
+    }
+  }
+
+  onLogin = () => {
+    this.state.googleUser = googleUser;
+    this.setState(this.state);
+  }
+
   render() {
+    var loginBtn = this.getLoginBtn();
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
@@ -31,6 +60,9 @@ class Navigation extends React.Component {
               <li className={location.pathname == '/' ? 'active' : ''}><Link to="/">Home</Link></li>
               <li className={location.pathname == '/ivcalc' ? 'active' : ''}><Link to="/ivcalc">IV Calc</Link></li>
               <li className={location.pathname == '/help' ? 'active' : ''}><Link to="/help">Help</Link></li>
+            </ul>
+            <ul className="nav navbar-nav navbar-right">
+              {loginBtn}
             </ul>
           </div>
         </div>

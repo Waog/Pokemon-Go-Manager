@@ -80,6 +80,18 @@ div.container.help-container > div > div > div.enhanced {
   margin-bottom: 40px;
 }
 
+.google-login-btn {
+  background-color: white;
+  width: 1.3em;
+  padding: 2px;
+  border-radius: 100px;
+}
+
+p.nav.navbar-text {
+  line-height: 20px;
+  color: white;
+}
+
 footer p a {
   color: #21295a;
   text-decoration: none;
