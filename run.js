@@ -18,8 +18,8 @@ const webpack = require('webpack');
 // TODO: Update configuration settings
 const config = {
   title: 'Pokemon Go Manager',              // Your website title
-  url: 'http://waog.net',                   // Your website URL
-  project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
+  url: 'http://oliverstadie.com',                   // Your website URL
+  project: 'pokemon-go-manager',      // Firebase project. See README.md -> How to Deploy
   trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
 };
 
