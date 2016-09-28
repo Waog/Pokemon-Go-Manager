@@ -6,7 +6,7 @@ RUN git clone https://github.com/Waog/Pokemon-Go-Manager.git app
 WORKDIR app
 
 # use dev branch
-git checkout -b dev origin/dev
+RUN git checkout -b dev origin/dev
 
 # install dependencies
 RUN npm install
