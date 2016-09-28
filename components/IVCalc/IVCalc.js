@@ -1,5 +1,6 @@
 import React from 'react';
 import Pokemon from './Pokemon'
+var Client = require('node-rest-client').Client;
 var _ = require('lodash');
 
 class IVCalc extends React.Component {
@@ -23,7 +24,54 @@ class IVCalc extends React.Component {
     }
   }
 
+  tryRest = () => {
+    var client = new Client();
+
+    // direct way
+    client.get("http://localhost:3000/api/trainer", function (data, response) {
+        // parsed response body as js object
+        console.log('REST get data', data);
+        // raw response
+        console.log('REST get response', response);
+    });
+
+    // set content-type header and data as json in args parameter
+    var args = {
+      data: {
+        googleID: '3289023890',
+        name: 'Oli St',
+        pokemon: 'Rattata'
+      },
+      headers: { "Content-Type": "application/json" }
+    };
+
+    client.post("http://localhost:3000/api/trainer", args, function (data, response) {
+        // parsed response body as js object
+        console.log('REST post data', data);
+        // raw response
+        console.log('REST post response', response);
+    });
+
+    // set content-type header and data as json in args parameter
+    var args2 = {
+      data: {
+        pokemon: 'Pidgey'
+      },
+      headers: { "Content-Type": "application/json" }
+    };
+
+    client.put("http://localhost:3000/api/trainer/57eba08bab751b19608823ae", args2, function (data, response) {
+        // parsed response body as js object
+        console.log('REST put data', data);
+        // raw response
+        console.log('REST put response', response);
+    });
+  }
+
   addNewPokemon = () => {
+
+    console.log('add!!')
+    this.tryRest();
 
     var newPokemon;
     if (this.state.pokemonSet.length > 0) {
