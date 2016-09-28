@@ -24,6 +24,10 @@ class Navigation extends React.Component {
     executeWhenLoginRdy(this.onLogin);
   }
 
+  componentWillUnmount() {
+    dontExecuteWhenLoginRdyAnymore(this.onLogin);
+  }
+
   getLoginBtn = () => {
     if (this.state.googleUser) {
       return (
@@ -31,7 +35,7 @@ class Navigation extends React.Component {
       );
     } else {
       return (
-        <li><Link id="navbarLoginBtn" to="#"><img className="google-login-btn" src="./google-login.png" alt="Google Logo" /> Sign in</Link></li>
+        <li><a id="navbarLoginBtn" href="#"><img className="google-login-btn" src="./google-login.png" alt="Google Logo" /> Sign in</a></li>
       );
     }
   }

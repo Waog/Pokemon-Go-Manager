@@ -18,6 +18,29 @@ class IVCalc extends React.Component {
     };
   }
 
+  componentDidMount() {
+    executeWhenLoginRdy(this.onLogin);
+  }
+
+  componentWillUnmount() {
+    dontExecuteWhenLoginRdyAnymore(this.onLogin);
+  }
+
+  onLogin = () => {
+    restClient.getTrainer(googleUser.getBasicProfile().getId(), this.onTrainerLoaded);
+  }
+
+  onTrainerLoaded = (trainer) => {
+    if (! trainer) {
+      restClient.createTrainer({
+        googleID: googleUser.getBasicProfile().getId(),
+        name: googleUser.getBasicProfile().getName(),
+        pokemon: []
+      }, this.onTrainerLoaded);
+      return;
+    }
+  }
+
   idChanger = (value, key) => {
     if (key == 'id') {
       return Math.random();
@@ -25,13 +48,6 @@ class IVCalc extends React.Component {
   }
 
   addNewPokemon = () => {
-
-    console.log('add!!')
-    restClient.createTrainer({googleID: '1', name: 'foo', pokemon: 'bar'});
-    restClient.getTrainer(1, function(trainer){
-      trainer.pokemon = 'updated';
-      restClient.updateTrainer(trainer);
-    });
 
     var newPokemon;
     if (this.state.pokemonSet.length > 0) {

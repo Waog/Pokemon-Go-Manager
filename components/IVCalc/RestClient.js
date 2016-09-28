@@ -11,7 +11,7 @@ exports.getTrainer = (googleID, callback) => {
   });
 }
 
-exports.createTrainer = (jsonObj) => {
+exports.createTrainer = (jsonObj, callback) => {
 
   // set content-type header and data as json in args parameter
   var args = {
@@ -24,6 +24,9 @@ exports.createTrainer = (jsonObj) => {
     console.log('REST post data', data);
     // raw response
     console.log('REST post response', response);
+    if (callback) {
+      callback(data);
+    }
   });
 }
 
