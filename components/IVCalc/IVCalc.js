@@ -35,9 +35,22 @@ class IVCalc extends React.Component {
       restClient.createTrainer({
         googleID: googleUser.getBasicProfile().getId(),
         name: googleUser.getBasicProfile().getName(),
-        pokemon: []
+        pokemonSet: this.state.pokemonSet
       }, this.onTrainerLoaded);
       return;
+    }
+
+    this.state._id = trainer._id;
+    this.state.pokemonSet = trainer.pokemonSet;
+    this.setState(this.state);
+  }
+
+  componentDidUpdate() {
+    if (this.state._id) {
+      restClient.updateTrainer({
+          _id: this.state._id,
+          pokemonSet: this.state.pokemonSet
+      });
     }
   }
 
