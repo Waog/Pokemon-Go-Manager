@@ -38,7 +38,6 @@ function attachSigninWhenRdy(element) {
 function _attachSigninNow(element) {
   auth2.attachClickHandler(element, {},
       function(_googleUser) {
-        console.log("Signed in as: ", _googleUser.getBasicProfile().getName());
         googleUser = _googleUser;
         _onLoggedIn();
       }, function(error) {
@@ -68,7 +67,6 @@ var executeWhenLoginRdy = function(method, param1, param2) {
 var dontExecuteWhenLoginRdyAnymore = function(method) {
   for (var i = 0; i < functionsToExecuteWhenLoginRdy.length; i++) {
     if (functionsToExecuteWhenLoginRdy[i][0] == method) {
-      console.log('removed method!');
       functionsToExecuteWhenLoginRdy.splice(i, 1);
       return;
     }
