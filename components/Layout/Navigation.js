@@ -46,13 +46,17 @@ class Navigation extends React.Component {
   }
 
   getLoginReminder = () => {
-    return (
-        <div className="login-reminder">
-          <span className="glyphicon glyphicon-cloud"></span>
-          <p>Login to synchronize your Pokemon with the cloud</p>
-          <span className="glyphicon glyphicon-arrow-right"></span>
-        </div>
+    if (this.state.googleUser) {
+      return null
+    } else {
+      return (
+          <div className="login-reminder">
+            <span className="glyphicon glyphicon-cloud"></span>
+            <p>Login to synchronize your Pokemon with the cloud</p>
+            <span className="glyphicon glyphicon-arrow-right"></span>
+          </div>
       )
+    }
   }
 
   render() {

@@ -140,9 +140,15 @@ class IVCalc extends React.Component {
   }
 
   getLoginReminder = () => {
-    return (
-        <div className="login-reminder-static"><span className="glyphicon glyphicon-cloud"></span><span>Login to synchronize your Pokemon with the cloud</span></div>
+    if (this.state._id) {
+      return null
+    } else {
+      return (
+        <div className="login-reminder-static">
+          <span className="glyphicon glyphicon-cloud"></span>
+          <p>Login to synchronize your Pokemon with the cloud</p></div>
       )
+    }
   }
 
   render() {
