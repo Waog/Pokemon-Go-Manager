@@ -1,5 +1,6 @@
 import React from 'react';
 import Pokemon from './Pokemon'
+var restClient = require('./RestClient');
 var _ = require('lodash');
 
 class IVCalc extends React.Component {
@@ -15,6 +16,42 @@ class IVCalc extends React.Component {
       }
       ]
     };
+  }
+
+  componentDidMount() {
+    executeWhenLoginRdy(this.onLogin);
+  }
+
+  componentWillUnmount() {
+    dontExecuteWhenLoginRdyAnymore(this.onLogin);
+  }
+
+  onLogin = () => {
+    restClient.getTrainer(googleUser.getBasicProfile().getId(), this.onTrainerLoaded);
+  }
+
+  onTrainerLoaded = (trainer) => {
+    if (! trainer) {
+      restClient.createTrainer({
+        googleID: googleUser.getBasicProfile().getId(),
+        name: googleUser.getBasicProfile().getName(),
+        pokemonSet: this.state.pokemonSet
+      }, this.onTrainerLoaded);
+      return;
+    }
+
+    this.state._id = trainer._id;
+    this.state.pokemonSet = trainer.pokemonSet;
+    this.setState(this.state);
+  }
+
+  componentDidUpdate() {
+    if (this.state._id) {
+      restClient.updateTrainer({
+          _id: this.state._id,
+          pokemonSet: this.state.pokemonSet
+      });
+    }
   }
 
   idChanger = (value, key) => {
@@ -102,11 +139,24 @@ class IVCalc extends React.Component {
     this.setState(this.state);
   }
 
+  getLoginReminder = () => {
+    if (this.state._id) {
+      return null
+    } else {
+      return (
+        <div className="login-reminder-static">
+          <span className="glyphicon glyphicon-cloud"></span>
+          <p>Login to synchronize your Pokemon with the cloud</p></div>
+      )
+    }
+  }
+
   render() {
     var pokemonElements = [];
     this.state.pokemonSet.forEach((pokemon) => {
       pokemonElements.push(<Pokemon pokemon={pokemon} key={pokemon.id} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
+    var loginReminder = this.getLoginReminder();
     return (
       <div className="iv-calc" role="main">
 
@@ -115,6 +165,7 @@ class IVCalc extends React.Component {
           <img className="img-responsive center-block subheading" style={{height: 4.5 + 'em'}} src="./iv-calc-subheading.svg" alt="IV Calculator" />
         </div>
         <div className="container">
+          {loginReminder}
           {pokemonElements}
         </div>
         <div className="container text-center">

@@ -20,6 +20,7 @@
     "fastclick": "^1.0.6",
     "history": "^3.0.0",
     "jquery": "^3.1.0",
+    "node-rest-client": "^2.0.1",
     "node-sass": "^3.8.0",
     "pokemon-go-iv-calculator": "^0.3.2",
     "react": "^15.2.1",
