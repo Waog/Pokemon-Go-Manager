@@ -45,8 +45,19 @@ class Navigation extends React.Component {
     this.setState(this.state);
   }
 
+  getLoginReminder = () => {
+    return (
+        <div className="login-reminder">
+          <span className="glyphicon glyphicon-cloud"></span>
+          <p>Login to synchronize your Pokemon with the cloud</p>
+          <span className="glyphicon glyphicon-arrow-right"></span>
+        </div>
+      )
+  }
+
   render() {
     var loginBtn = this.getLoginBtn();
+    var loginReminder = this.getLoginReminder();
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
@@ -66,6 +77,7 @@ class Navigation extends React.Component {
               <li className={location.pathname == '/help' ? 'active' : ''}><Link to="/help">Help</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
+              {loginReminder}
               {loginBtn}
             </ul>
           </div>

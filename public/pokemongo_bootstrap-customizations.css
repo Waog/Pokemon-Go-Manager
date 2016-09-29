@@ -47,6 +47,70 @@ body {
   margin: 1em auto;
 }
 
+@media (max-width: 992px) {
+  .login-reminder {
+    display: none;
+  }
+
+  .login-reminder-static {
+      background-color: #ffcb05;
+      padding: 1em;
+      border: rgb(33, 41, 90) solid 0.3em;
+      border-radius: 1.3em;
+      text-align: center;
+      margin-bottom: 2em;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+  }
+
+  .login-reminder-static .glyphicon {
+      float: left;
+      color: rgb(33, 41, 90);
+      font-size: 3em;
+      margin-right: 0.3em;
+  }
+}
+
+@media (min-width: 992px) {
+  .login-reminder-static {
+    display: none;
+  }
+
+  /*
+  .login-reminder {
+    background-color: #ffcb05;
+    position: fixed;
+    top: 0.5em;
+    right: 8em;
+    width: 15em;
+    padding: 1em;
+    border: rgb(33, 41, 90) solid 0.3em;
+    border-radius: 1.3em;
+  }
+  */
+
+  .login-reminder {
+    background-color: #ffcb05;
+    float: left;
+    margin-top: 3px;
+    padding: 0.5em 1em;
+    border: rgb(33, 41, 90) solid 0.2em;
+    border-radius: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-reminder p {
+    margin: 0 1em;
+  }
+
+  .login-reminder .glyphicon {
+    color: rgb(33, 41, 90);
+  }
+}
+
 .pokecard {
   margin-top: 20px;
 }

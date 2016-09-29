@@ -139,11 +139,18 @@ class IVCalc extends React.Component {
     this.setState(this.state);
   }
 
+  getLoginReminder = () => {
+    return (
+        <div className="login-reminder-static"><span className="glyphicon glyphicon-cloud"></span><span>Login to synchronize your Pokemon with the cloud</span></div>
+      )
+  }
+
   render() {
     var pokemonElements = [];
     this.state.pokemonSet.forEach((pokemon) => {
       pokemonElements.push(<Pokemon pokemon={pokemon} key={pokemon.id} nameChangeListener={this.changePokemonName} deleteListener={this.deletePokemon} changeValueSetListener={this.changeValueSet} deleteValueSetListener={this.deleteValueSet} addValueSetListener={this.addNewValueSet} /> );
     });
+    var loginReminder = this.getLoginReminder();
     return (
       <div className="iv-calc" role="main">
 
@@ -152,6 +159,7 @@ class IVCalc extends React.Component {
           <img className="img-responsive center-block subheading" style={{height: 4.5 + 'em'}} src="./iv-calc-subheading.svg" alt="IV Calculator" />
         </div>
         <div className="container">
+          {loginReminder}
           {pokemonElements}
         </div>
         <div className="container text-center">
