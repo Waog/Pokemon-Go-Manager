@@ -1,9 +1,7 @@
 FROM node:6
 
-# Pull App
-WORKDIR /usr/src
-RUN git clone https://github.com/Waog/Pokemon-Go-Manager.git app
-WORKDIR app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
 # install dependencies
 RUN npm install
